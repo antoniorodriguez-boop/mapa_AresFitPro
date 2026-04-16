@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Cobertura | OPTIMANET</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #060a13;
+            --bg-card: rgba(16, 24, 45, 0.7);
+            --accent-neon: #00f2fe;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --neon-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: var(--neon-shadow);
+        }
+
+        .subtitle {
+            color: var(--accent-neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        /* --- CONTENEDOR DEL MAPA --- */
+        .map-wrapper {
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            box-shadow: var(--neon-shadow);
+            margin-bottom: 40px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .map-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+            /* Filtro opcional para que la foto pegue con el diseño oscuro */
+            filter: grayscale(0.2) contrast(1.1); 
+        }
+
+        /* --- LEYENDA --- */
+        .legend-container {
+            background: rgba(16, 24, 45, 0.5);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .legend-text h4 {
+            color: var(--accent-neon);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .legend-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Colores de los puntos de la leyenda */
+        .dot.blue { background-color: #00f2fe; box-shadow: 0 0 10px #00f2fe; }
+        .dot.purple { background-color: #7000ff; box-shadow: 0 0 10px #7000ff; }
+        .dot.green { background-color: #00ff88; box-shadow: 0 0 10px #00ff88; }
+
+        .btn-back {
+            margin-top: 40px;
+            display: inline-block;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover { opacity: 1; color: var(--accent-neon); }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .legend-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="subtitle">Infraestructura Global</p>
+        <h1>Ubicació i Cobertura</h1>
+        
+        <div class="map-wrapper">
+            <img src="tu-foto-mapa.jpg" alt="Mapa de instal·lacions">
+        </div>
+
+        <div class="legend-container">
+            
+            <div class="legend-item">
+                <div class="dot blue"></div>
+                <div class="legend-text">
+                    <h4>Seu Central</h4>
+                    <p>Badalona (Carrer d'Antoni Bori). Centre d'operacions i magatzem.</p>
+                </div>
+            </div>
+
+            <div class="legend-item">
+                <div class="dot purple"></div>
+                <div class="legend-text">
+                    <h4>Àrea Operativa</h4>
+                    <p>Barcelona i tota l'Àrea Metropolitana (AMB). Servei presencial immediat.</p>
+                </div>
+            </div>
+
+            <div class="legend-item">
+                <div class="dot green"></div>
+                <div class="legend-text">
+                    <h4>Projectes Actius</h4>
+                    <p>Punts on estem realitzant muntatges de xarxa actualment.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="index.html" class="btn-back">← Tornar a la pàgina principal</a>
+    </div>
+
+</body>
+</html>
