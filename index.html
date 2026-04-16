@@ -48,8 +48,8 @@
             margin-bottom: 40px;
         }
 
-        /* --- CONTENEDOR DEL MAPA --- */
-        .map-wrapper {
+        /* --- CONTENEDOR DEL MAPA PRINCIPAL --- */
+        .map-wrapper-main {
             background: var(--bg-card);
             padding: 15px;
             border-radius: 20px;
@@ -60,16 +60,14 @@
             backdrop-filter: blur(10px);
         }
 
-        .map-wrapper img {
+        .map-wrapper-main img {
             width: 100%;
             height: auto;
             border-radius: 12px;
             display: block;
-            /* Filtro opcional para que la foto pegue con el diseño oscuro */
-            filter: grayscale(0.2) contrast(1.1); 
         }
 
-        /* --- LEYENDA --- */
+        /* --- LEYENDA CON ICONOS PEQUEÑOS Y BLANCOS --- */
         .legend-container {
             background: rgba(16, 24, 45, 0.5);
             border-radius: 20px;
@@ -77,22 +75,40 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            text-align: left;
+            gap: 30px;
         }
 
         .legend-item {
             display: flex;
-            align-items: flex-start;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            margin-top: 6px;
-            flex-shrink: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Contenedor del icono pequeño */
+        .symbol-icon {
+            width: 50px; /* Tamaño del símbolo */
+            height: 50px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .symbol-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Fuerza a que la imagen sea blanca */
+            filter: brightness(0) invert(1); 
+            opacity: 0.9;
         }
 
         .legend-text h4 {
@@ -101,13 +117,7 @@
             margin-bottom: 5px;
         }
 
-        .legend-text p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        /* Colores de los puntos de la leyenda */
+        /* Colores de los puntos */
         .dot.blue { background-color: #00f2fe; box-shadow: 0 0 10px #00f2fe; }
         .dot.purple { background-color: #7000ff; box-shadow: 0 0 10px #7000ff; }
         .dot.green { background-color: #00ff88; box-shadow: 0 0 10px #00ff88; }
@@ -123,11 +133,6 @@
         }
 
         .btn-back:hover { opacity: 1; color: var(--accent-neon); }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .legend-container { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -136,7 +141,7 @@
         <p class="subtitle">Infraestructura</p>
         <h1>Ubicació de les sales</h1>
         
-        <div class="map-wrapper">
+        <div class="map-wrapper-main">
             <img src="fotos/mapaw" alt="Mapa de instal·lacions">
         </div>
 
@@ -144,37 +149,31 @@
             
             <div class="legend-item">
                 <div class="dot blue"></div>
-                <div class="legend-text">
-                    <h4>Seu Central</h4>
-                    <p>Badalona (Carrer d'Antoni Bori). Centre d'operacions i magatzem.</p>
-                <div class="map-wrapper">
-            <img src="fotos/pesas.png" alt="Mapa de instal·lacions">
+                <div class="symbol-icon">
+                    <img src="fotos/pesas.png" alt="Icono Pesas">
                 </div>
-
+                <div class="legend-text">
+                    <h4>Zones d'exercisis</h4>
                 </div>
             </div>
 
             <div class="legend-item">
                 <div class="dot purple"></div>
+                <div class="symbol-icon">
+                    <img src="fotos/zumba.png" alt="Icono Zumba">
+                </div>
                 <div class="legend-text">
-                    <h4>Àrea Operativa</h4>
-                    <p>Barcelona i tota l'Àrea Metropolitana (AMB). Servei presencial immediat.</p>
-                        <div class="map-wrapper">
-            <img src="fotos/zumba.png" alt="Mapa de instal·lacions">
-                        </div>
-
+                    <h4>Zona de clases</h4>
                 </div>
             </div>
 
             <div class="legend-item">
                 <div class="dot green"></div>
+                <div class="symbol-icon">
+                    <img src="fotos/vestidores.png" alt="Icono Vestidores">
+                </div>
                 <div class="legend-text">
-                    <h4>Projectes Actius</h4>
-                    <p>Punts on estem realitzant muntatges de xarxa actualment.</p>
-                        <div class="map-wrapper">
-            <img src="fotos/vestidores.png" alt="Mapa de instal·lacions">
-                        </div>
-
+                    <h4>Zona de vestidors</h4>
                 </div>
             </div>
 
